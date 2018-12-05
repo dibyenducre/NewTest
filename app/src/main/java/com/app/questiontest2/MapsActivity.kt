@@ -1,7 +1,9 @@
 package com.app.questiontest2
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -13,6 +15,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+
+
+    companion object {
+        var LANGUAGE_EN = "EN"
+        fun getMoreInfo():String { return "This is more fun" }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,4 +48,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Log.d(">>>","=-=-=-=-")
+        val data = Intent().putExtra("iData","Hello MAP")
+        setResult(200,data)
+
+    }
+
+    fun llkposd():String{
+
+
+        return ""
+    }
+
+    /*
+    override fun onDestroy() {
+        super.onDestroy()
+
+    }*/
 }
